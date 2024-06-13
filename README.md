@@ -1,8 +1,8 @@
-# template
+# kalgory-py
 
 Start new repository with this template. All the contents below can be customized to fit your repository needs.
 
-## Installation
+## Installations
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
