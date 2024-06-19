@@ -6,8 +6,9 @@ from typing import get_type_hints
 # Library 
 class Block(abc.ABC):
     
-    def __init__(self):
+    def __init__(self, name):
         super().__init__()
+        self._name = name
         self._check_execute_signature()
 
     def _check_execute_signature(self):
@@ -33,20 +34,26 @@ class Block(abc.ABC):
     @abc.abstractmethod 
     def execute(self):
         pass #找不到如何customize error message
-
-    @abc.abstractmethod
+    
+    @property
     def name(self):
-        pass
+        return(self._name)
+    @name.setter
+    def name(self, name):
+        self._name = name
+        return
 
 		
 """
 # Usercode
 class CustomBlock(Block):
 		
-	def name(self):
-		return "I'm a custom block!"
-
 	def execute(self, x:int, y:float) -> str:
 		print("hello world")
-a = CustomBlock()
+"""
+
+"""
+#UI
+a = CustomBlock("blockl")
+print(a.name)
 """
