@@ -1,5 +1,3 @@
-# DUKE Version
-
 import abc
 from typing import get_type_hints
 
@@ -23,17 +21,10 @@ class Block(abc.ABC):
         params = execute_method.__code__.co_argcount
         if params != len(hints):
             raise TypeError("Every input/argument must be assigned type") #TODO make this more detailed
-    
-    @property
-    def _get_argument_type(self):
-        # return arguments' type
-        execute_method = getattr(self.__class__, 'execute', None)
-        hints = get_type_hints(execute_method)
-        return hints
-    
+        
     @abc.abstractmethod 
     def execute(self):
-        pass #找不到如何customize error message
+        pass #TODO:customize error message
     
     @property
     def name(self):
@@ -44,16 +35,3 @@ class Block(abc.ABC):
         return
 
 		
-"""
-# Usercode
-class CustomBlock(Block):
-		
-	def execute(self, x:int, y:float) -> str:
-		print("hello world")
-"""
-
-"""
-#UI
-a = CustomBlock("blockl")
-print(a.name)
-"""
