@@ -1,61 +1,20 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
 
 [project]
 name = "kalgory"
-dynamic = ["version"]
-description = "Python client library for kalgory, a visualization and drag n' drop tool for algorithmic trader."
+authors = [{name = "kalgory", email = "developer@kalgory.com"}]
 readme = "README.md"
-requires-python = ">=3.8"
-license = "MPL-2.0"
-keywords = ["algorithmic-trading", "investment", "kalgory", "visualization", "drag n' drop"]
-authors = [
-  { name = "趙子賢", email = "danny900714@gmail.com" },
-]
-classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
-]
-dependencies = []
+license = {file = "LICENSE"}
+dynamic = ["version", "description"]
 
 [project.urls]
-Documentation = "https://github.com/kalgory-com/kalgory-py#readme"
-Issues = "https://github.com/kalgory-com/kalgory-py/issues"
-Source = "https://github.com/kalgory-com/kalgory-py"
+Home = "https://kalgory.com"
 
-[tool.hatch.version]
-path = "src/kalgory/__about__.py"
-
-[tool.hatch.envs.types]
-extra-dependencies = [
-  "mypy>=1.0.0",
-]
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/kalgory tests}"
-
-[tool.coverage.run]
-source_pkgs = ["kalgory", "tests"]
-branch = true
-parallel = true
-omit = [
-  "src/kalgory/__about__.py",
-]
-
-[tool.coverage.paths]
-kalgory = ["src/kalgory", "*/kalgory/src/kalgory"]
-tests = ["tests", "*/kalgory/tests"]
-
-[tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
+[project.optional-dependencies]
+dev = [
+    "componentize-py",
+    "pytest",
+    "wasmtime",
 ]
