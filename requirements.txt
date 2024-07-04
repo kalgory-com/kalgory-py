@@ -1,0 +1,23 @@
+componentize-py==0.13.5
+docutils==0.21.2
+flit_core==3.9.0
+idna==3.7
+importlib_resources==6.4.0
+iniconfig==2.0.0
+--extra-index-url https://buf.build/gen/python
+kalgory_block_protocolbuffers_pyi==27.2.0.2.20240704220645+a7ea9748cd38
+--extra-index-url https://buf.build/gen/python
+kalgory_block_protocolbuffers_python==27.1.0.2.20240704220645+a7ea9748cd38
+packaging==24.1
+pluggy==1.5.0
+protobuf==5.27.2
+--extra-index-url https://buf.build/gen/python
+protocolbuffers_wellknowntypes_protocolbuffers_pyi==27.2.0.2.20240606200853+ee20af7d5b60
+--extra-index-url https://buf.build/gen/python
+protocolbuffers_wellknowntypes_protocolbuffers_python==27.1.0.2.20240606200853+ee20af7d5b60
+pytest==8.2.2
+requests==2.32.3
+tomli_w==1.0.0
+types-protobuf==5.27.0.20240626
+urllib3==2.2.2
+wasmtime==22.0.0
