@@ -28,4 +28,4 @@ class TestBlock:
         with Store() as store:
             from tests.bindings import Root
             component = Root(store)
-            assert component.execute(store, bytes(range(10))).value == bytes(range(10))
+            assert component.execute(store, bytes(range(10))).value == "Block".encode("utf-8")

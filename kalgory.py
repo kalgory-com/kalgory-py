@@ -8,10 +8,11 @@ from bindings.block import Block
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
-        return payload
+        return self._find_block_class().__name__.encode('utf-8')
 
-    def _find_block_class(self) -> type:
-        classes = self.__class__.__subclasses__()
+    @staticmethod
+    def _find_block_class() -> type:
+        classes = BaseBlock.__subclasses__()
         if len(classes) == 0:
             raise RuntimeError("BaseBlock should be implemented as Block")
         elif len(classes) > 1:
