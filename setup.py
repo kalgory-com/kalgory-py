@@ -6,6 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name="kalgory",
     version="0.1.0-dev",
+    python_requires=">=3.10",
     author="kalgory",
     author_email="dev@kalgory.com",
     description="Python client library for kalgory, a visualization and drag n' drop tool for algorithmic trader",
