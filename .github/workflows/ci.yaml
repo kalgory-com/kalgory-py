@@ -25,4 +25,4 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov wasmtime componentize-py
       - name: Test with pytest
-        run: python3 -m pytest tests
+        run: python3 -m pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=kalgory --cov-report=xml --cov-report=html
