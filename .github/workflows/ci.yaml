@@ -3,6 +3,9 @@ on:
   push: {}
   pull_request: {}
 
+permissions:
+  checks: write
+
 jobs:
   test:
     name: Test
@@ -28,9 +31,7 @@ jobs:
       - name: Test with pytest
         run: python3 -m pytest tests --cov=kalgory --junitxml=junit/test-results-${{ matrix.os }}-${{ matrix.python-version }}.xml --cov-report=xml --cov-report=html
       - name: Publish test report
-        uses: dorny/test-reporter@v1
+        uses: mikepenz/action-junit-report@v4
         if: ${{ always() }}
         with:
-          name: pytest-results-${{ matrix.os }}-${{ matrix.python-version }}
-          path: junit/test-results-${{ matrix.os }}-${{ matrix.python-version }}.xml
-          reporter: jest-junit
+          report_paths: junit/test-results-*.xml
