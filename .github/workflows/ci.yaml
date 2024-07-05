@@ -56,3 +56,4 @@ jobs:
         if: ${{ always() }}
         with:
           report_paths: junit/test-results-*.xml
+          check_name: pytest test report
