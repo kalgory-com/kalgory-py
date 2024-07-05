@@ -30,9 +30,28 @@ jobs:
           pip install pytest pytest-cov wasmtime componentize-py
       - name: Test with pytest
         run: python3 -m pytest tests --cov=kalgory --junitxml=junit/test-results-${{ matrix.os }}-${{ matrix.python-version }}.xml --cov-report=xml --cov-report=html
-      - name: Publish test report
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v4
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
+        with:
+          name: pytest-results-${{ matrix.os }}-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.os }}-${{ matrix.python-version }}.xml
+          retention-days: 1
+
+  report:
+    name: Report
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pytest-results-*
+          merge-multiple: true
+      - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
         if: ${{ always() }}
         with:
           report_paths: junit/test-results-*.xml
-          check_name: Pytest ${{ runner.os }} Python ${{ matrix.python-version }}
