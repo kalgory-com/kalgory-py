@@ -33,4 +33,4 @@ jobs:
         with:
           name: pytest-results-${{ matrix.os }}-${{ matrix.python-version }}
           path: junit/test-results-${{ matrix.os }}-${{ matrix.python-version }}.xml
-          reporter: java-junit
+          reporter: jest-junit
