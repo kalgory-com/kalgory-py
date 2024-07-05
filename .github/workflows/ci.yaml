@@ -35,3 +35,4 @@ jobs:
         if: ${{ always() }}
         with:
           report_paths: junit/test-results-*.xml
+          check_name: Pytest ${{ runner.os }} Python ${{ matrix.python-version }}
