@@ -1,9 +1,6 @@
-"""Python client library for kalgory, a visualization and drag n' drop tool for algorithmic trader"""
-__version__ = "0.1.0-dev"
-
 from abc import ABC
 
-from bindings.block import Block
+from kalgory.bindings.block import Block
 
 
 class BaseBlock(ABC, Block):

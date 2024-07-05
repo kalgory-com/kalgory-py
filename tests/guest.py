@@ -1,4 +1,4 @@
-from kalgory import BaseBlock
+from kalgory.component import BaseBlock
 
 
 class Block(BaseBlock):

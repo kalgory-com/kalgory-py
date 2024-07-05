@@ -10,8 +10,8 @@ class TestBlock:
         path = f"{tmp_path}/block.wasm"
         subprocess.run([
             "componentize-py",
-            "-d", "./wit",
-            "-w", "kalgory:block/block@0.1.0",
+            "-d", "wit",
+            "-w", "kalgory:component/block@0.1.0",
             "componentize", "-s", "tests.guest", "-o", path,
         ])
         yield path
