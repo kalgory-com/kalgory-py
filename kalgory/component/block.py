@@ -5,7 +5,7 @@ from kalgory.bindings.block import Block
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
-        return self._find_block_class().__name__.encode('utf-8')
+        return self._find_block_class().__name__.encode("utf-8")
 
     @staticmethod
     def _find_block_class() -> type:

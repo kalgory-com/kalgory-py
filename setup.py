@@ -1,6 +1,6 @@
-from setuptools import setup, find_namespace_packages
+from setuptools import find_namespace_packages, setup
 
-with open("README.md", "r") as fh:
+with open("README.md") as fh:
     long_description = fh.read()
 
 setup(
@@ -14,9 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/kalgory-com/kalgory-py",
     packages=find_namespace_packages(),
-    extras_require={
-        "dev": ["componentize-py", "wasmtime", "pytest"]
-    },
+    extras_require={"dev": ["componentize-py", "wasmtime", "pytest"]},
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Environment :: WebAssembly",
@@ -27,6 +25,6 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
-        "Topic :: Software Development :: Libraries :: Application Frameworks"
+        "Topic :: Software Development :: Libraries :: Application Frameworks",
     ],
 )
