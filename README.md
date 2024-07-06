@@ -1,28 +1,28 @@
 # kalgory-py
 
-Start new repository with this template. All the contents below can be customized to fit your repository needs.
+[![CI](https://github.com/kalgory-com/kalgory-py/actions/workflows/ci.yaml/badge.svg)](https://github.com/kalgory-com/kalgory-py/actions/workflows/ci.yaml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/354248f7e34319db351e/maintainability)](https://codeclimate.com/github/kalgory-com/kalgory-py/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/354248f7e34319db351e/test_coverage)](https://codeclimate.com/github/kalgory-com/kalgory-py/test_coverage)
+
+Python library for [kalgory](https://kalgory.com), a visualization and drag n' drop tool for algorithmic trader. 
 
 ## Installations
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install kalgory.
 
 ```bash
-pip install foobar
+pip install kalgory
 ```
 
 ## Usage
 
 ```python
-import foobar
+from kalgory.component import BaseBlock
 
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+class Block(BaseBlock):
+    def handle(self, **kwargs) -> bytes:
+        # You can write any data handling logic here as you want
+        pass
 ```
 
 ## Contributing

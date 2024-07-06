@@ -1,0 +1,5 @@
+package kalgory:component@0.1.0;
+
+world block {
+    export execute: func(payload: list<u8>) -> result<list<u8>>;
+}
