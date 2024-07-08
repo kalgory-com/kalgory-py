@@ -5,7 +5,13 @@ from kalgory.bindings.block import Block
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
-        return self._find_block_class().__name__.encode("utf-8")
+        the_class = self._find_block_class()#.__name__.encode("utf-8")
+        ins = the_class()
+        return ins.handle("2", 3).encode("utf-8")
+        '''
+        下面會出錯
+        return the_class.handle("2", 3).encode("utf-8")
+        '''
 
     @staticmethod
     def _find_block_class() -> type:
