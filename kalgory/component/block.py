@@ -10,8 +10,8 @@ class BaseBlock(ABC, Block):
         try:
             jsondata = json.loads(payload)
             if len(jsondata) != ins.handle.__code__.co_argcount:
-                raise ValueError(f'Block "{user_class.__name__}" 
-                                 expects {ins.handle__code__.co_argcount} arguments, but received
+                raise ValueError(f'Block "{user_class.__name__}" \
+                                 expects {ins.handle__code__.co_argcount} arguments, but received\
                                 {ins.handle__code__.co_argcount} arguments from previous blocks')
         except json.JSONDecodeError as je:
             print("JSONDecodeError:", je)
