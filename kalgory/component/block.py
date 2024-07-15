@@ -8,7 +8,6 @@ from .utility import validate, zipjson
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
-        
         user_class = self._find_block_class()
         ins = user_class()
 
@@ -22,7 +21,6 @@ class BaseBlock(ABC, Block):
 
         j_dict = zipjson(block_output)
         return j_dict
-        
 
     @staticmethod
     def _find_block_class() -> type:
