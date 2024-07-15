@@ -1,8 +1,9 @@
+import json
 import subprocess
 
 import pytest
 from wasmtime import Store
-import json
+
 
 class TestBlock:
     @pytest.fixture

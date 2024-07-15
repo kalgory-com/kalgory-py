@@ -1,6 +1,8 @@
 import json
 from typing import get_type_hints
+
 from kalgory.bindings.block import Block
+
 
 def zipjson(block_output: any) -> dict:
     j_dict = {}
@@ -33,7 +35,7 @@ def validate(ins: Block, jsondata:dict):
     #list and tuple types are confusing in python, for now only simple checks is implemented
     #TODO: add checks of elements of list and tuple  
     hints.pop('return')
-    for (arg_key, arg_value), (hint_key, annotation) in zip(jsondata.items(), hints.items()):
+    for (_, arg_value), (_, annotation) in zip(jsondata.items(), hints.items()):
         if type(arg_value) != annotation:
             type_string = str(type(arg_value))
             if type_string == "<class 'list'>" and str(annotation)[:4] == 'list' or str(annotation)[:5] == 'tuple':
