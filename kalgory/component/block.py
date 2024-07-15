@@ -1,28 +1,26 @@
 from abc import ABC
 import json
 from kalgory.bindings.block import Block
-
+from .utility import zipjson, validate
+#from wasmtime import ExitTrap
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
+        
         user_class = self._find_block_class()
         ins = user_class()
+
+
+        # JSON deserizlie
         try:
             jsondata = json.loads(payload)
-            if len(jsondata) != ins.handle.__code__.co_argcount:
-                raise ValueError(f'Block "{user_class.__name__}" \
-                                 expects {ins.handle__code__.co_argcount} arguments, but received\
-                                {ins.handle__code__.co_argcount} arguments from previous blocks')
         except json.JSONDecodeError as je:
-            print("JSONDecodeError:", je)
-        except ValueError as error:
-            print(f"Incoherent between input data and output data: {error}")
-        block_output = ins.handle(**jsondata)
-        j_dict = []
-        for index, data in enumerate(block_output):
-            key = f"o{index}"
-            j_dict[key] = data
-        return json.dumps(j_dict).encode("utf-8")
+            raise RuntimeError(f"Exception caught: {je}")
+        validate(ins, jsondata)
+        block_output = ins.handle(*jsondata.values())
+
+        j_dict = zipjson(block_output)
+        return j_dict
         
 
     @staticmethod
