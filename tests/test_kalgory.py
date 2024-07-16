@@ -33,8 +33,8 @@ class TestBlock:
         with Store() as store:
             from tests.bindings import Root
 
-            data = {"o1": 1, "o2": 20010714.0, "o3": (123, "fefe")}
-            out = {"o1": 20010715, "o2": (123, "fefe")}
+            data = [1, 20010714.0, (123, "fefe")]
+            out = [20010715, (123, "fefe")]
             data = json.dumps(data).encode("utf-8")
             out = json.dumps(out).encode("utf-8")
             component = Root(store)
@@ -44,8 +44,8 @@ class TestBlock:
         from tests.guest import Block
 
         block = Block()
-        data = {"o1": 1, "o2": 20010714.0, "o3": (123, "fefe")}
-        out = {"o1": 20010715, "o2": (123, "fefe")}
+        data = [1, 20010714.0, (123, "fefe")]
+        out = [20010715, (123, "fefe")]
         data = json.dumps(data).encode("utf-8")
         out = json.dumps(out).encode("utf-8")
 

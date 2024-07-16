@@ -17,7 +17,7 @@ class BaseBlock(ABC, Block):
         except json.JSONDecodeError as je:
             raise RuntimeError(f"Exception caught: {je}") from je
         validate(ins, jsondata)
-        block_output = ins.handle(*jsondata.values())
+        block_output = ins.handle(*jsondata)
 
         j_dict = zipjson(block_output)
         return j_dict
