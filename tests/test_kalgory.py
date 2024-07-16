@@ -1,3 +1,4 @@
+import json
 import subprocess
 
 import pytest
@@ -32,5 +33,20 @@ class TestBlock:
         with Store() as store:
             from tests.bindings import Root
 
+            data = [1, 20010714.0, (123, "fefe")]
+            out = [20010715, (123, "fefe")]
+            data = json.dumps(data).encode("utf-8")
+            out = json.dumps(out).encode("utf-8")
             component = Root(store)
-            assert component.execute(store, bytes(range(10))).value == b"Block"
+            assert component.execute(store, data).value == out
+
+    def test_pure_execution(self):
+        from tests.guest import Block
+
+        block = Block()
+        data = [1, 20010714.0, (123, "fefe")]
+        out = [20010715, (123, "fefe")]
+        data = json.dumps(data).encode("utf-8")
+        out = json.dumps(out).encode("utf-8")
+
+        assert block.execute(data) == out

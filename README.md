@@ -8,6 +8,8 @@ Python library for [kalgory](https://kalgory.com), a visualization and drag n' d
 
 ## Installations
 
+You will need python >= 3.10
+
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install kalgory.
 
 ```bash

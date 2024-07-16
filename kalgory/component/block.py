@@ -1,11 +1,26 @@
+import json
 from abc import ABC
 
 from kalgory.bindings.block import Block
 
+from .utility import validate, zipjson
+
 
 class BaseBlock(ABC, Block):
     def execute(self, payload: bytes) -> bytes:
-        return self._find_block_class().__name__.encode("utf-8")
+        user_class = self._find_block_class()
+        ins = user_class()
+
+        # JSON deserizlie
+        try:
+            jsondata = json.loads(payload)
+        except json.JSONDecodeError as je:
+            raise RuntimeError(f"Exception caught: {je}") from je
+        validate(ins, jsondata)
+        block_output = ins.handle(*jsondata)
+
+        j_dict = zipjson(block_output)
+        return j_dict
 
     @staticmethod
     def _find_block_class() -> type:
