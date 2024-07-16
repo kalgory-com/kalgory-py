@@ -36,7 +36,7 @@ def validate(ins: Block, jsondata: list):
     # list and tuple types are confusing in python, for now only simple checks is implemented
     # TODO: add checks of elements of list and tuple
     hints.pop("return")
-    for (arg_value, annotation) in zip(jsondata, hints.values()):
+    for arg_value, annotation in zip(jsondata, hints.values()):
         if type(arg_value) != annotation:
             type_string = str(type(arg_value))
             if type_string == "<class 'list'>" and str(annotation)[:4] == "list" or str(annotation)[:5] == "tuple":
