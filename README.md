@@ -22,10 +22,20 @@ pip install kalgory
 from kalgory.component import BaseBlock
 
 class Block(BaseBlock):
-    def handle(self, **kwargs) -> bytes:
+    def handle(self, *args) -> bytes:
         # You can write any data handling logic here as you want
         pass
 ```
+for example
+```python
+from kalgory.component import BaseBlock
+
+class Block(BaseBlock):
+    def handle(self, NVDA_stock_price: float, money_in_the_bank: float) -> bool:
+        buy = True if NVDA_stock_price > NVDA_future_price else False
+        return buy
+```
+
 
 ## Contributing
 
