@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 [project]
 name = "kalgory"
-version = "0.1.1"
+version = "0.1.0"
 authors = [
   { name="Chu Wei Chang", email="chuweichang0319@gmail.com" },
   { name="ZhaoTzuHsien", email="danny900714@gmail.com" }
