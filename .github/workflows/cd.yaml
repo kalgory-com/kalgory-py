@@ -7,7 +7,7 @@ on:
     paths:
       - .github/workflows/cd.yaml
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   release-publish:
