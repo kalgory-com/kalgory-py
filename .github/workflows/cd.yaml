@@ -3,7 +3,7 @@ name: Publish Python Package
 on:
   push:
     branches:
-      - publish-to-pypi
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,6 +35,6 @@ jobs:
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPITEST_API_TOKEN }}
-        run: python3 -m twine upload --repository testpypi dist/*
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: python3 -m twine upload dist/*
 
