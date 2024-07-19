@@ -6,6 +6,8 @@ on:
   push:
     paths:
       - .github/workflows/cd.yaml
+    tags-ignore:
+      - '*'
   pull_request:
     branches: [ "main" ]
 
