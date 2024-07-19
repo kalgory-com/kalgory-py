@@ -24,8 +24,9 @@ classifiers = [
 [tool.hatch.build.targets.wheel]
 packages = ["kalgory-py/kalgory"]
 include = ["kalgory-py/kalgory/**"]
-
-
+[tool.setuptools_scm]
+version_scheme = "release"
+local_scheme = "no-local-version"
 [project.urls]
 Homepage = "https://github.com/kalgory-com/kalgory-py"
 Issues = "https://github.com/kalgory-com/kalgory-py/issues"

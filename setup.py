@@ -5,8 +5,8 @@ with open("README.md") as fh:
 
 setup(
     name="kalgory",
-    setup_requires=['setuptools_scm'],
     use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     python_requires=">=3.10",
     author="kalgory",
     author_email="dev@kalgory.com",
