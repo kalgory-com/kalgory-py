@@ -5,7 +5,7 @@ with open("README.md") as fh:
 
 setup(
     name="kalgory",
-    version="0.1a1",
+    dynamic = ["version"],
     python_requires=">=3.10",
     author="kalgory",
     author_email="dev@kalgory.com",
