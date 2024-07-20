@@ -2,7 +2,7 @@ from setuptools_scm.version import get_local_node_and_date
 
 
 def custom_version_scheme(version):
-    return version.format_with("{version}")
+    return version.format_with("{tag}")
 
 
 def custom_local_scheme(version):
