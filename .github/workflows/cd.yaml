@@ -38,8 +38,7 @@ jobs:
       - name: Determine version bump
         id: version_bump
         run: |
-          echo "BUMP_TYPE=patch" >> $GITHUB_ENV  # Set the bump type (e.g., patch, minor, major)
-          bump2version $BUMP_TYPE --verbose  # Apply the version bump
+          bump2version patch --verbose  # Apply the version bump
 
       # Step 5: Build the package
       - name: Build the package
