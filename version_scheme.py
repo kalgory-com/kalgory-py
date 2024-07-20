@@ -7,6 +7,7 @@ def custom_version_scheme(version):
     else:
         return version.format_next_version("{version}.rc{distance}")
 
+
 def custom_local_scheme(version):
     from os import getenv
 
