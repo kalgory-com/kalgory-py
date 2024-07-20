@@ -25,7 +25,7 @@ classifiers = [
 packages = ["kalgory-py/kalgory"]
 include = ["kalgory-py/kalgory/**"]
 [tool.setuptools_scm]
-version_file = "kalgory-py/_version.py"
+version_file = "_version.py"
 version_scheme = "version_scheme:custom_version_scheme"
 local_scheme = "version_scheme:custom_local_scheme"
 [project.urls]
