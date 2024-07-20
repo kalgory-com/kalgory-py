@@ -2,10 +2,7 @@ from setuptools_scm.version import get_local_node_and_date
 
 
 def custom_version_scheme(version):
-    if version.exact:
-        return version.format_with("{version}")
-    else:
-        return version.format_next_version("{version}.rc{distance}")
+    return version.format_with("{version}")
 
 
 def custom_local_scheme(version):
