@@ -41,7 +41,7 @@ def validate(ins: Block, jsondata: list):
     # TODO: add checks of elements of list and tuple
     hints.pop("return")
     for arg_value, annotation in zip(jsondata, hints.values()):
-        if type(arg_value) != annotation:
+        if str(type(arg_value)) != str(annotation):
             type_string = str(type(arg_value))
             if type_string == "<class 'list'>" and str(annotation)[:4] == "list" or str(annotation)[:5] == "tuple":
                 continue

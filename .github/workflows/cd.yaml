@@ -1,0 +1,62 @@
+name: Publish Python Package
+
+on:
+  # Trigger the workflow when a release is published
+  release:
+    types: [published]
+  # Trigger the workflow when changes are pushed to the file `cd.yaml`
+  push:
+    paths:
+      - .github/workflows/cd.yaml
+  # Trigger the workflow for pull requests targeting the `main` branch
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest  # Runs the job on the latest Ubuntu environment
+
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'  # Specify the Python version to use
+      
+      # Step 3: Install required dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip  # Upgrade pip to the latest version
+          python3 -m pip install twine  # Install Twine for publishing packages
+          pip install setuptools setuptools-scm bump2version wheel # Install additional tools
+
+      # Step 4: Determine the type of version bump and apply it
+      - name: Determine version bump
+        id: version_bump
+        run: |
+          bump2version patch --verbose  # Apply the version bump
+
+      # Step 5: Build the package
+      - name: Build the package
+        run: python3 setup.py sdist bdist_wheel  # Build source distribution and wheel files
+
+      # Step 6: Publish the package to PyPI (only on release events)
+      - name: Publish to PyPI
+        if: github.event_name == 'release'
+        env:
+          TWINE_USERNAME: __token__  # Use the token-based authentication for PyPI
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}  # Retrieve the PyPI API token from secrets
+        run: python3 -m twine upload dist/*  # Upload the built package to PyPI
+
+      # Step 7: Publish the package to Test PyPI (for push or pull request events)
+      - name: Publish to PyPItest
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        env:
+          TWINE_USERNAME: __token__  # Use the token-based authentication for Test PyPI
+          TWINE_PASSWORD: ${{ secrets.PYPITEST_API_TOKEN }}  # Retrieve the Test PyPI API token from secrets
+        run: python3 -m twine upload --repository testpypi dist/*  # Upload the built package to Test PyPI

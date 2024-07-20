@@ -1,9 +1,9 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
 [project]
 name = "kalgory"
-version = "0.1.0"
+dynamic = ["version"]
 authors = [
   { name="Chu Wei Chang", email="chuweichang0319@gmail.com" },
   { name="ZhaoTzuHsien", email="danny900714@gmail.com" }
@@ -24,8 +24,10 @@ classifiers = [
 [tool.hatch.build.targets.wheel]
 packages = ["kalgory-py/kalgory"]
 include = ["kalgory-py/kalgory/**"]
-
-
+[tool.setuptools_scm]
+version_file = "_version.py"
+version_scheme = "version_scheme:custom_version_scheme"
+local_scheme = "version_scheme:custom_local_scheme"
 [project.urls]
 Homepage = "https://github.com/kalgory-com/kalgory-py"
 Issues = "https://github.com/kalgory-com/kalgory-py/issues"
