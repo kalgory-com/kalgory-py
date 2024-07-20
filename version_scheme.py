@@ -17,4 +17,4 @@ def custom_local_scheme(version):
         sha_num = getenv("GITHUB_SHA")[:8]
         return f".{sha_num}"
     else:
-        return get_local_node_and_date(version)
+        return ""
