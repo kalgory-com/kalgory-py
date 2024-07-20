@@ -12,9 +12,9 @@ def custom_local_scheme(version):
         return ""
     elif getenv("GITHUB_REF") and "refs/pull/" in getenv("GITHUB_REF"):
         pr_number = getenv("GITHUB_REF").split("/")[2]
-        return f".pr{pr_number}"
+        return f"+pr{pr_number}"
     elif getenv("GITHUB_SHA"):
         sha_num = getenv("GITHUB_SHA")[:8]
-        return f".{sha_num}"
+        return f"+{sha_num}"
     else:
         return ""
