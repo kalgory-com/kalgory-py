@@ -12,8 +12,8 @@ def custom_local_scheme(version):
         return ""
     elif getenv("GITHUB_REF") and "refs/pull/" in getenv("GITHUB_REF"):
         pr_number = getenv("GITHUB_REF").split("/")[2]
-        return f"pr{pr_number}"
+        return f".pr{pr_number}"
     elif getenv("GITHUB_SHA"):
-        return getenv("GITHUB_SHA")[:7]
+        return getenv(".GITHUB_SHA")[:7]
     else:
         return get_local_node_and_date(version)
